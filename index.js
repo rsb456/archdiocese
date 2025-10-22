@@ -61,7 +61,7 @@ const mongoURI =
     ? process.env.MONGO_URI
     : localMongoURI;
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 1000;
 
 const connectWithRetry = () => {
   console.log(`⏳ Connecting to MongoDB at: ${mongoURI}`);
@@ -73,8 +73,8 @@ const connectWithRetry = () => {
     })
     .then(() => {
       console.log("✅ MongoDB connected successfully");
-      app.listen(PORT, "127.0.0.1", () => {
-        console.log(`🚀 Server running at http://127.0.0.1:${PORT}`);
+      app.listen(PORT, "0.0.0.0", () => {
+        console.log(`🚀 Server running on 0.0.0.0:${PORT}`);
       });
     })
     .catch((err) => {
